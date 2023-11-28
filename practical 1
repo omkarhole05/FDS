@@ -1,0 +1,78 @@
+""""In second year computer engineering class, group A student’s play cricket, group B students 
+play badminton and group C students play football. 
+Write a Python program using functions to compute following: - 
+a) List of students who play both cricket and badminton 
+b) List of students who play either cricket or badminton but not both 
+c) Number of students who play neither cricket nor badminton 
+d) Number of students who play cricket and football but not badminton"""
+
+
+
+grpA=[]
+grpB=[]
+grpC=[]
+
+n=int(input("Enter the number of students: "))
+for i in range(n):
+    a=str(input("Enter the name of students who play cricket: "))
+    grpA.append(a)
+print()
+print("list of students: ",grpA)
+print()
+
+n=int(input("Enter the number of students: "))
+for i in range(n):
+    b=str(input("Enter the name of students who play football: "))
+    grpB.append(b)
+print()
+print("list of students: ",grpB)
+print()
+
+n=int(input("Enter the number of students: "))
+for i in range(n):
+    c=str(input("Enter the name of students who play badmntan: "))
+    grpC.append(c)
+print()
+print("list of students: ",grpC)
+print()
+
+#a) List of students who play both cricket and badminton 
+
+listAC=[]
+lA=len(grpA)
+lC=len(grpC)
+for i in range(lA):
+    for j in range(lC):
+        if grpA[i]==grpC[j]:
+            listAC.append(grpA[i])
+            break
+            
+print("Name of students who play cricket and badmintan: ",listAC)
+print() 
+
+#list of the player who play either cricket or badmintan but not both
+    
+listBC=[]
+for i in grpA:
+	if i not in grpC:
+		listBC.append(i)
+for j in grpC:
+	if j not in grpA:
+		listBC.append(j)
+		
+print ("The list of students who play either cricket or badmintan : " ,listBC)
+print()
+
+
+#list of students who play niether cricket or nither badmintan only football
+
+listF=[]
+for i in grpB:
+    if i not in grpA and i not in grpC:
+        listF.append(i)
+      
+print("list of students who play niether cricket or nither badmintan only football: ",listF)
+        
+        
+        
+        
