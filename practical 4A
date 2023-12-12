@@ -1,0 +1,45 @@
+
+list = [1, 2, 3, 4, 6, 8, 9, 11, 22, 33, 44, 55]
+print(list)
+
+key = int(input("Enter the roll to search: "))
+
+
+def linear():
+    for i in range(len(list)):
+        if list[i] == key:
+            return i
+    return -1
+
+
+index = linear()
+
+if index == -1:
+    print("not present")
+else:
+    print("student is present at: ", index)
+
+
+def sentinel_search():
+    list = [3, 7, 1, 6, 9, 5, 2]
+    item = int(input("Enter roll for searching whether students attended the training program: "))
+
+    last = list[-1]
+    list[-1] = item
+
+    i = 0
+    while item != list[i]:
+        i = i+1
+        
+    list[-1] = last
+
+    if i < len(list) - 1 or item == list[-1]:
+        print("Student attended the session.")
+    else:
+        list.append(item)
+        print(list)
+        print("Student did not attend the session.")
+
+
+# Call the function
+sentinel_search()
