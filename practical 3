@@ -1,0 +1,90 @@
+ROWS = int(input("Enetr the no. of rows: "))
+COLUMN = int(input("Enetr the no. of column: "))
+
+matrix1 = []
+for i in range(ROWS):
+    M = []
+    for j in range(COLUMN):
+        n = int(input("Enter the row wise of 1st matrix: "))
+        M.append(n)
+    matrix1.append(M)
+
+print("1st matrix is: ")
+for r in matrix1:
+    print(r)
+
+matrix2 = []
+for i in range(ROWS):
+    M = []
+    for j in range(COLUMN):
+        n = int(input("Enter the row wise of 2nd matrix: "))
+        M.append(n)
+    matrix2.append(M)
+
+print("2nd matrix is: ")
+for r in matrix2:
+    print(r)
+
+print()
+MA = []
+for i in range(len(matrix1)):
+    add = []
+    for j in range(len(matrix2)):
+        A = matrix1[i][j]+matrix2[i][j]
+        add.append(A)
+    MA.append(add)
+
+for r in MA:
+    print(r)
+
+MA = []
+for i in range(len(matrix1)):
+    add = []
+    for j in range(len(matrix2)):
+        A = matrix1[i][j]-matrix2[i][j]
+        add.append(A)
+    MA.append(add)
+print("\nAddition is: ")
+for r in MA:
+    print(r)
+
+
+#multiplication
+result=[[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]]
+# iterate through rows of X
+
+for i in range(len(matrix1)):
+    # iterate through columns of Y
+    for j in range(len(matrix2[0])):
+        # iterate through rows of Y
+        for k in range(len(matrix2)):
+            result[i][j] += matrix1[i][k] * matrix2[k][j]
+
+print("Multiplication is: ")
+for r in result:
+    print(r)
+
+# transpose
+print("\nTranspose of 1st matrix:")
+T=[]
+for i in range(ROWS):
+    A = []
+    for j in range(COLUMN):
+        A.append(matrix1[j][i])
+    T.append(A)
+    
+for t in T:
+    print(t)
+    
+print("\nTranspose of 2nd matrix:")
+T=[]
+for i in range(ROWS):
+    A = []
+    for j in range(COLUMN):
+        A.append(matrix2[j][i])
+    T.append(A)
+    
+for t in T:
+    print(t)
