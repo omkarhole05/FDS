@@ -1,0 +1,52 @@
+"""Write  a  python  program  to  store  first  year  percentage  of  students  in  array.  Write function 
+for sorting array of floating point numbers in ascending order using 
+a) Selection Sort 
+b) Bubble sort and display top five scores."""
+
+olist = []
+
+N = int(input("Enter the total no. of students: "))
+for i in range(N):
+    SCORE = int(input("Enter the scores of student: "))
+    olist.append(SCORE)
+
+print("\n The list of student is: ", olist)
+newlist=olist.copy()
+# 1.Selection sort
+
+# newlist=[5,7,8,4,9]
+def selection():
+    nlist = []
+    for j in range(len(olist)):
+        for i in olist:
+            k = min(olist)
+            nlist.append(k)  # due to this sorted array is get seprated
+            olist.remove(k)  # due to this only unsorted part is remaining
+
+    print("\nMarks of students after performing Selection Sort on the list : ",nlist)
+
+# 2.Bubble sort
+
+def bubble():
+    for i in range(len(newlist)):
+        for j in range(len(newlist)-1):
+            if newlist[j] > newlist[j+1]:
+                newlist[j], newlist[j+1] = newlist[j+1], newlist[j]
+
+    print("\nMarks of students after performing Bubble Sort on the list : ",newlist)
+    print("\nTop five scores are: ",newlist[-5:])
+
+def menu():
+    print("\n---------------MENU---------------")
+    ch=int(input("\t1.Selection sort \n\t2.bubble sort \n :"))
+    if ch==1:
+        selection()
+        menu()
+    elif ch==2:
+        bubble()
+        menu()
+    else:
+        print("Enter valid no.")
+        menu()
+    
+menu()
