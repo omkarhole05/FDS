@@ -1,0 +1,55 @@
+#include<iostream>
+#include<stack>
+#include<cctype>
+
+using namespace std;
+
+void original(const string& input) 
+{
+    stack<char> charstack;
+    for(char c: input)
+    {
+        charstack.push(c);
+    }
+
+    cout<<"original string: "<<input<<endl;
+
+    cout<<"reversed string: ";
+
+    while(!charstack.empty()){
+        cout<<charstack.top();
+        charstack.pop();
+    }
+
+
+}
+
+bool pallindrome(const string& input){
+    stack<char>charstack;
+    for(char c: input){
+        charstack.push(tolower(c));
+    }
+
+    for(char c: input){
+        if (charstack.top()!=tolower(c)){
+            return false;
+        }
+        charstack.pop();         
+    }  
+    return true;
+}
+
+int main(){
+    string strinput;
+    cout<<endl;
+    cout<<"Enter the string: ";
+    getline(cin,strinput);
+    original(strinput);
+    cout<<endl;
+    if(pallindrome(strinput)){
+        cout<<"Enter word is pallindrome";
+    }
+    else{
+        cout<<"It is not pallindrome";
+    }
+}
