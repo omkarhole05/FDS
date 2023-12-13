@@ -1,0 +1,31 @@
+arr1 = []
+N = int(input("Enter the total no. of students: "))
+for i in range(N):
+    SCORE = int(input("Enter the roll no of students in sorted array: "))
+    arr1.append(SCORE)
+    
+print("LIst of students: ",arr1)
+def binary_search(arr1, low, high, x):
+
+	if high >= low:
+		mid = (high + low) // 2
+
+		if arr1[mid] == x:		#arr1=[1,2,3,4,5,6,7]
+			return mid
+		elif arr1[mid] > x:
+			return binary_search(arr1, low, mid - 1, x)
+		else:
+			return binary_search(arr1, mid + 1, high, x)
+
+	else:
+		return -1
+
+x=int(input("\n\tEnter the element to search: "))
+result = binary_search(arr1, 0, len(arr1)-1, x)
+
+if result != -1:
+	print("\n==>Element is present at index", str(result))
+else:
+	print("\n==>Element is not present in array")
+
+print()
