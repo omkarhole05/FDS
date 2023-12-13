@@ -1,0 +1,119 @@
+#include <iostream>
+#define max 10
+using namespace std;
+
+struct Queue
+{
+    int data[max];
+    int rear, front;
+};
+
+class queue
+{
+    struct Queue q;
+
+public:
+    queue()
+    {
+        q.rear = q.front = -1;
+    }
+
+    int isfull();
+    int isempty();
+    void enqueue(int);
+    int dequeue();
+    void display();
+};
+
+int queue::isempty()
+{
+    if (q.rear == q.front)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+int queue::isfull()
+{
+    if (q.rear == max - 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+int queue::dequeue()
+{
+    q.front = q.front + 1;
+    return q.data[q.front];
+}
+void queue::enqueue(int x)
+{
+    q.rear = q.rear + 1;
+    q.data[q.rear] = x;
+}
+void queue::display()
+{
+    int i;
+    for (i = q.front + 1; i <= q.rear; i++)
+    {
+        cout << q.data[i]<<" "<<endl;
+    }
+}
+
+int main()
+{
+    queue obj;
+    int ch, x;
+    do
+    {   
+        cout<<"";
+        cout << "Enter the choice :";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            if (!obj.isfull())
+            {
+                cout << "enetr data: ";
+                cin >> x;
+                obj.enqueue(x);
+            }
+            else
+            {
+                cout << "queue is overflow" << endl;
+            }
+            break;
+        case 2:
+            if (!obj.isempty())
+            {
+                cout << obj.dequeue();
+            }
+            else
+            {
+                cout << "Queue is not full" << endl;
+            }
+            break;
+        case 3:
+            if (!obj.isempty())
+            {
+                obj.display();
+            }
+            else
+            {
+                cout<<endl;
+                cout << "queue is empty" << endl;
+            }
+            break;
+        case 4:
+            cout<<"exit";
+            break;
+        }
+    } while (ch != 4);
+    return 0;
+}
