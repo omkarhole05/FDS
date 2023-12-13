@@ -1,0 +1,147 @@
+#include <iostream>
+using namespace std;
+#define size 5
+
+class dequeue
+{
+    int rear, front, a[10], count;
+
+public:
+    dequeue()
+    {
+        rear = -1;
+        front = -1;
+        count = 0;
+    }
+    void add_front(int);
+    void add_rear(int);
+    void display();
+    void del_front();
+    void del_rear();
+};
+
+void dequeue::add_front(int item)
+{
+    int i;
+    if (front == -1)
+    {
+        rear++;
+        front++;
+        a[rear] = item;
+        count++;
+    }
+    else if (rear >= size - 1)
+    {
+        cout << "queue is full" << endl;
+    }
+    else
+    {
+        for (i = count - 1; i >= 0; i--)
+        {
+            a[i + 1] = a[i];
+        }
+        a[0] = item;
+        count++;
+        rear++;
+    }
+}
+
+void dequeue::add_rear(int item)
+{
+    if (front == -1)
+    {
+        rear++;
+        front++;
+        a[rear] = item;
+        count++;
+    }
+    else if (rear >= size - 1)
+    {
+        cout << "Queue is full" << endl;
+    }
+    else
+    {
+        a[++rear] = item;
+    }
+}
+void dequeue::display()
+{   
+    cout<<"queue is: ";
+    for (int i = front; i <= rear; i++)
+    {   
+        cout << " " << a[i];
+    }
+}
+void dequeue::del_front()
+{
+    if (front == -1)
+    {
+        cout << "Queue is empty" << endl;
+    }
+    else
+    {
+        if (front == rear)
+        {
+            front = rear = -1;
+        }
+        cout << "deleted item:" << a[front]<<endl;
+        front = front + 1;
+    }
+}
+void dequeue::del_rear()
+{
+    if (front == -1)
+    {
+        cout << "queue is empty" << endl;
+    }
+    else
+    {
+        if (front == rear)
+        {
+            front = rear = -1;
+        }
+        cout << "deleted item: " << a[rear]<<endl;
+        rear = rear - 1;
+    }
+}
+
+int main()
+{
+    int ch,item;
+    dequeue q;
+    do
+    {
+        cout << "\n\t1.insert frm begining \n\t2.insert frm end \n\t3.display \n\t4.delete frm starting \n\t5.delete frm ending" << endl;
+        cin >> ch;
+
+        switch (ch)
+        {
+        case 1:
+            cout << "Enter element: " << endl;
+            cin >> item;
+            q.add_front(item);
+            break;
+
+        case 2:
+            cout << "Enter element: " << endl;
+            cin >> item;
+            q.add_rear(item);
+            break;
+        case 3:
+            q.display();
+            break;
+        case 4:
+            q.del_front();
+            q.display();
+            break;
+        case 5:
+            q.del_rear();
+            q.display();
+            break;
+        default:
+            cout<<"Invalid choice"<<endl;
+            break;
+        }
+
+    } while (ch != 5);
+}
